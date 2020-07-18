@@ -1,6 +1,6 @@
 import {createArray, positionArrCenter, shuffleArr, checkIfSorted} from './array.js'
 
-import {bubbleSort} from './algorithms.js'
+import {bubbleSort} from './bubblesort.js'
 
 let speed = 25 - +runSpeed.value;
 
@@ -15,6 +15,8 @@ let functionObject = {
 arrSize.addEventListener('change', function() {
     let arrSizeVal = arrSize.value;
 
+    state = true; 
+    
     createArray(arrSizeVal);
 
     shuffleArr();
