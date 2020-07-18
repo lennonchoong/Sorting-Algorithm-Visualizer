@@ -1,0 +1,154 @@
+body {
+    background-color: #323330;
+    background-size: cover;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#header{
+    height: 60px;
+    background-color: #f0db4f;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index:1;
+    width: 100%;
+    color: #323330;
+}
+
+#title{
+    font-size: 26px;
+    position: relative;
+    top: -22px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 5px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.header-elements{
+    position: relative;
+    left: 400px;
+    top: -68px;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sizeslider, .speedslider{
+    position: relative;
+    left: 400px;
+    top: -71px;
+    -webkit-appearance: none;
+    width: 100px;
+    height: 5px;
+    border-radius: 5px;  
+    background: #5c5d58;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.sizeslider::-webkit-slider-thumb, .speedslider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%; 
+    background: #0a0a0a;
+    cursor: pointer;
+}
+
+
+.algolist {
+    position: relative;
+    left: 965px;
+    bottom: 12px;
+}
+
+.algolist select{
+    background-color: #222;
+    color: white;
+    width: 210px;
+    height: 32px;
+    border: none;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: none;
+}
+
+.algolist select:focus{
+    box-shadow: none;
+    outline: none;
+}
+
+#runbtn {
+    background: none;
+    padding: 0;
+    height: 42px;
+    font-size: 20px;
+    color: #323330;
+    outline: 0;
+    border: none;
+    box-shadow: none;
+    font-family: 'Poppins', sans-serif;    
+    position: relative;
+    left: 670px;
+    top: -68px;
+    cursor: pointer;
+}
+
+#runbtn:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+#randomizebtn {
+    background: none;
+    padding: 0;
+    height: 42px;
+    font-size: 20px;
+    color: #323330;
+    outline: 0;
+    border: none;
+    box-shadow: none;
+    font-family: 'Poppins', sans-serif;    
+    position: relative;
+    left: 640px;
+    top: -68px;
+    cursor: pointer;
+}
+
+#randomizebtn:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+#arrContainer {
+    position: relative;
+    top: 100px;
+    height: 600px;
+    width: 1340px;
+}
+
+.pillar {
+    background-color: #fff;
+    position: relative;
+    display: inline-block;
+    margin: 0.5px;
+}
+
+.comparedCell {
+    background-color:tomato;
+}
+
+.swappedCell {
+    background-color: lime;
+}
