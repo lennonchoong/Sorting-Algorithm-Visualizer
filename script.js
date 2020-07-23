@@ -2,6 +2,8 @@ import {createArray, positionArrCenter, shuffleArr, checkIfSorted} from './array
 
 import {bubbleSort} from './bubblesort.js'
 
+import {mergeSort} from './mergesort.js'
+
 let speed = 25 - +runSpeed.value;
 
 let selectedAlgo = algoSelection.value;
@@ -10,6 +12,7 @@ let state = true;
 
 let functionObject = {
     'bubbleSort': bubbleSort,
+    'mergeSort': mergeSort,
 }
 
 arrSize.addEventListener('change', function() {
@@ -40,9 +43,10 @@ runbtn.addEventListener('click', function() {
     state = false;
 
     let delay = functionObject[selectedAlgo](arr, speed);
-
+    
     setTimeout(function() {
         state = true;
+        arr.map((x) => x.classList.remove('swappedCell'));
     }, delay);
 })
 
