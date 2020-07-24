@@ -4,7 +4,13 @@ import {bubbleSort} from './bubblesort.js'
 
 import {mergeSort} from './mergesort.js'
 
-let speed = 25 - +runSpeed.value;
+import {insertionSort} from './insertionsort.js'
+
+import {selectionSort} from './selectionsort.js'
+
+import {quickSort} from './quicksort.js'
+
+let speed = 40 - +runSpeed.value;
 
 let selectedAlgo = algoSelection.value;
 
@@ -13,6 +19,9 @@ let state = true;
 let functionObject = {
     'bubbleSort': bubbleSort,
     'mergeSort': mergeSort,
+    'insertionSort': insertionSort,
+    'selectionSort': selectionSort,
+    'quickSort': quickSort,
 }
 
 arrSize.addEventListener('change', function() {
@@ -26,10 +35,16 @@ arrSize.addEventListener('change', function() {
 })
 
 runSpeed.addEventListener('change', function() {
-    speed = 25 - +runSpeed.value;
+    speed = 40 - +runSpeed.value;
 })
 
 algoSelection.addEventListener('change', function() {
+    state = true;
+
+    createArray(arrSize.value);
+
+    shuffleArr();
+
     selectedAlgo = algoSelection.value;
 })
 
@@ -41,7 +56,7 @@ runbtn.addEventListener('click', function() {
     if (!state || checkIfSorted(arr, sortedArr)) return;
 
     state = false;
-
+    
     let delay = functionObject[selectedAlgo](arr, speed);
     
     setTimeout(function() {
