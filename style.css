@@ -152,3 +152,7 @@ body {
 .swappedCell {
     background-color: lime;
 }
+
+.pivot {
+    background-color: cyan;
+}
