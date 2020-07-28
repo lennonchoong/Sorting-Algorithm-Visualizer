@@ -26,12 +26,12 @@ function partition(arr, low, high, speed) {
     }
     
     swapPivot(arr, i , high, speed);
-    
+
+    speedA += +speed;
+
     setTimeout(function() {
         arr[high].classList.remove('pivot');
     }, speedA);
-
-    speedA += +speed;
 
     [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
 
@@ -81,6 +81,13 @@ function swap(arr, i, j, speed) {
     arr = Array.from(arr);
 
     setTimeout(function() {
+        arr[j].classList.add('swappedCell');
+        arr[i].classList.add('swappedCell');
+    }, speedA)
+
+    speedA += speed;
+
+    setTimeout(function() {
         let beforeI;
 
         if (i - 1 < 0) {
@@ -93,8 +100,6 @@ function swap(arr, i, j, speed) {
             arr[beforeI].after(arr[j]);
         }
         
-        arr[j].classList.add('swappedCell');
-        arr[i].classList.add('swappedCell');
     }, speedA)
     
     speedA += +speed;
@@ -103,8 +108,6 @@ function swap(arr, i, j, speed) {
         arr[j].classList.remove('swappedCell');
         arr[i].classList.remove('swappedCell');
     }, speedA);
-
-    speedA += +speed;
 
 }
 

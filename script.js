@@ -12,6 +12,8 @@ import {quickSort} from './quicksort.js'
 
 import {cocktailSort} from './cocktailsort.js'
 
+import {heapSort} from './heapsort.js'
+
 let speed = 40 - +runSpeed.value;
 
 let selectedAlgo = algoSelection.value;
@@ -25,6 +27,7 @@ let functionObject = {
     'selectionSort': selectionSort,
     'quickSort': quickSort,
     'cocktailSort': cocktailSort,
+    'heapsort': heapSort,
 }
 
 arrSize.addEventListener('change', function() {

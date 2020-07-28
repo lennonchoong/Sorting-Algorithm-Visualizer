@@ -15,7 +15,7 @@ function cocktailSort(arr, speed) {
         
         for (let i = start; i < end; i++) {
             if (parseInt(arr[i].style.height) > parseInt(arr[i + 1].style.height)) {
-                speedA = swap(arr[i], arr[i + 1], speed, speedA);
+                speedA = swapAscending(arr[i], arr[i + 1], speed, speedA);
 
                 [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
                 swapped = true;
@@ -32,7 +32,7 @@ function cocktailSort(arr, speed) {
 
         for (let j = end - 1; j > start - 1; j--) {
             if (parseInt(arr[j].style.height) > parseInt(arr[j + 1].style.height)) {
-                speedA = swap(arr[j], arr[j + 1], speed, speedA);
+                speedA = swapDescending(arr[j], arr[j + 1], speed, speedA);
 
                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
                 swapped = true;
@@ -63,10 +63,10 @@ function highlightComparison(i, j, speed, speedA) {
     return speedA
 }
 
-function swap(i, j, speed, speedA) {
+function swapAscending(i, j, speed, speedA) {
     setTimeout(function() {
         i.classList.add("swappedCell");
-        j.classList.add("swappedCell");
+        j.classList.add("comparedCell");
         j.after(i);
     }, speedA);
 
@@ -74,6 +74,23 @@ function swap(i, j, speed, speedA) {
 
     setTimeout(function() {
         i.classList.remove("swappedCell");
+        j.classList.remove("comparedCell");
+    }, speedA);
+    
+    return speedA
+}
+
+function swapDescending(i, j, speed, speedA) {
+    setTimeout(function() {
+        i.classList.add("comparedCell");
+        j.classList.add("swappedCell");
+        j.after(i);
+    }, speedA);
+
+    speedA += +speed;
+
+    setTimeout(function() {
+        i.classList.remove("comparedCell");
         j.classList.remove("swappedCell");
     }, speedA);
     
