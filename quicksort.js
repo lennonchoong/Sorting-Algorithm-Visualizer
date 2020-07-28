@@ -6,7 +6,13 @@ function partition(arr, low, high, speed) {
     let i = (low - 1);
 
     let pivot = arr[high];
+
+    setTimeout(function() {
+        arr[high].classList.add('pivot');
+    }, speedA);
     
+    speedA += +speed;
+
     for (let j = low; j < high; j++) {
         if (parseInt(arr[j].style.height) < parseInt(pivot.style.height)) {
             i++;
@@ -14,11 +20,19 @@ function partition(arr, low, high, speed) {
             swap(arr, i , j, speed);
 
             [arr[i], arr[j]] = [arr[j], arr[i]];
+        } else {
+            highlightComparison(arr, i, j, speed);
         }
     }
     
     swapPivot(arr, i , high, speed);
     
+    setTimeout(function() {
+        arr[high].classList.remove('pivot');
+    }, speedA);
+
+    speedA += +speed;
+
     [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
 
     return (i + 1)
@@ -41,6 +55,27 @@ function quickSort(arr, speed, low = 0, high = arr.length -1) {
     return returnSpeed
 }
 
+function highlightComparison(arr, i, j, speed) {
+    arr = Array.from(arr);
+    if (i < 0) {
+        i = 0;
+    }
+
+    if (j < 0) { 
+        j = 0;
+    }
+    setTimeout(function() {        
+        arr[j].classList.add('comparedCell');
+        arr[i].classList.add('comparedCell');
+    }, speedA)
+
+    speedA += +speed;
+
+    setTimeout(function() {
+        arr[i].classList.remove('comparedCell');
+        arr[j].classList.remove('comparedCell');
+    }, speedA)
+}
 
 function swap(arr, i, j, speed) {
     arr = Array.from(arr);
@@ -58,16 +93,19 @@ function swap(arr, i, j, speed) {
             arr[beforeI].after(arr[j]);
         }
         
-        arr[j].classList.add('comparedCell');
-        arr[i].classList.add('comparedCell');
+        arr[j].classList.add('swappedCell');
+        arr[i].classList.add('swappedCell');
     }, speedA)
     
     speedA += +speed;
     
     setTimeout(function() {
-        arr[j].classList.remove('comparedCell');
-        arr[i].classList.remove('comparedCell');
+        arr[j].classList.remove('swappedCell');
+        arr[i].classList.remove('swappedCell');
     }, speedA);
+
+    speedA += +speed;
+
 }
 
 function swapPivot(arr, i, high, speed) {
@@ -81,12 +119,7 @@ function swapPivot(arr, i, high, speed) {
             arr[high].after(arr[i + 1]);
             arrContainer.prepend(arr[high]);
         }
-        arr[high].classList.add('pivot');
     }, speedA)
     
     speedA += +speed;
-
-    setTimeout(function() {
-        arr[high].classList.remove('pivot');
-    }, speedA);
 }
