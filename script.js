@@ -27,7 +27,7 @@ let functionObject = {
     'selectionSort': selectionSort,
     'quickSort': quickSort,
     'cocktailSort': cocktailSort,
-    'heapsort': heapSort,
+    'heapSort': heapSort,
 }
 
 arrSize.addEventListener('change', function() {
