@@ -15,7 +15,7 @@
             <a id="speedSelector" class="header-elements">Speed</a>
                 <input id="runSpeed" class="speedslider" type="range" min="-5" max="45" value="20" step="1">
             <a id="algorithm" class="header-elements">Algorithms</a>
-            <div class="algolist" style="position: absolute">
+            <div id="algolist" style="position: absolute">
                 <select id="algoSelection">
                     <option value="bubbleSort">Bubble Sort</option>
                     <option value="quickSort">Quick Sort</option>
@@ -23,11 +23,16 @@
                     <option value="insertionSort">Insertion Sort</option>
                     <option value="selectionSort">Selection Sort</option>
                     <option value="cocktailSort">Cocktail Sort</option>
-                    <option value="heapSort" selected>Heap Sort</option>
+                    <option value="heapSort">Heap Sort</option>
                 </select>
             </div>
             <a id="randomizebtn">Randomize</a>
             <a id="runbtn" >Run</a>
+            <div>
+                <div id="annotationBubble"></div>
+                <div id='triangle'></div>
+            </div>
+            
         </div>
         <div id="arrContainer">
 

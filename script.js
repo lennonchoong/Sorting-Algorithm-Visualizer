@@ -14,6 +14,8 @@ import {cocktailSort} from './cocktailsort.js'
 
 import {heapSort} from './heapsort.js'
 
+import {annotationFunctionObject} from './annotationText.js'
+
 let speed = 40 - +runSpeed.value;
 
 let selectedAlgo = algoSelection.value;
@@ -52,6 +54,8 @@ algoSelection.addEventListener('change', function() {
     shuffleArr();
 
     selectedAlgo = algoSelection.value;
+
+    insertTextIntoBubble(selectedAlgo);
 })
 
 runbtn.addEventListener('click', function() {
@@ -71,6 +75,16 @@ runbtn.addEventListener('click', function() {
     }, delay);
 })
 
+function positionAnnotation() {
+    annotationBubble.style.left = algolist.offsetLeft - (parseInt(getComputedStyle(annotationBubble).width) - algolist.offsetWidth) / 2 + 'px';
+    triangle.style.left = algolist.offsetLeft - (parseInt(getComputedStyle(triangle)['border-left-width']) - algolist.offsetWidth) / 2 + 'px';
+}
+
+function insertTextIntoBubble(selectedAlgo) {
+    annotationBubble.innerHTML = '';
+    annotationBubble.innerHTML = annotationFunctionObject[selectedAlgo];
+}
+
 randomizebtn.addEventListener('click', function() {
     if (!state) return;
 
@@ -80,6 +94,25 @@ randomizebtn.addEventListener('click', function() {
 window.addEventListener('resize', function() {
     positionArrCenter(arrContainer);
 })
+
+algoSelection.addEventListener('mouseover', function() {
+    annotationBubble.style.display = 'block';
+    triangle.style.display = 'block';
+})
+
+algoSelection.addEventListener('mouseout', function() {
+    annotationBubble.style.display = 'none';
+    triangle.style.display = 'none';
+})
+
+algoSelection.addEventListener('mousedown', function() {
+    annotationBubble.style.display = 'none';
+    triangle.style.display = 'none';
+})
+
+insertTextIntoBubble(selectedAlgo);
+
+positionAnnotation();
 
 createArray(arrSize.value);
 

@@ -64,10 +64,13 @@ function swap(arr, i, j, speed, speedA) {
             arr[j].after(arr[i]);
             arr[i - 1].after(arr[j]);
         }
+    }, speedA)
 
+    speedA += +speed;
+
+    setTimeout(function() {
         arr[i].classList.remove('comparedCell');
         arr[j].classList.remove('comparedCell');
-
     }, speedA)
 
     speedA += +speed;
@@ -96,10 +99,13 @@ function arrange(arr, i, j, speed, speedA) {
             arr[j].after(arr[i]);
             arr[i - 1].after(arr[j]);
         }
+    }, speedA)
 
+    speedA += +speed;
+
+    setTimeout(function() {
         arr[i].classList.remove('swappedCell');
         arr[j].classList.remove('swappedCell');
-
     }, speedA)
     
     speedA += +speed;
