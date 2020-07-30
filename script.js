@@ -8,11 +8,11 @@ import {insertionSort} from './insertionsort.js'
 
 import {selectionSort} from './selectionsort.js'
 
-import {quickSort} from './quicksort.js'
+import {quickSort, timeoutFunctionsQuickSort} from './quicksort.js'
 
 import {cocktailSort} from './cocktailsort.js'
 
-import {heapSort} from './heapsort.js'
+import {heapSort, timeoutFunctionsHeapSort} from './heapsort.js'
 
 import {annotationFunctionObject} from './annotationText.js'
 
@@ -21,6 +21,8 @@ let speed = 40 - +runSpeed.value;
 let selectedAlgo = algoSelection.value;
 
 let state = true;
+
+let currentlyRunning;
 
 let functionObject = {
     'bubbleSort': bubbleSort,
@@ -36,6 +38,13 @@ arrSize.addEventListener('change', function() {
     let arrSizeVal = arrSize.value;
 
     state = true; 
+
+    timeoutFunctionsHeapSort.map((x) => clearTimeout(x));
+    timeoutFunctionsQuickSort.map((x) => clearTimeout(x));
+
+    clearTimeout(currentlyRunning)
+
+    turnButtonOpaque();
     
     createArray(arrSizeVal);
 
@@ -49,7 +58,14 @@ runSpeed.addEventListener('change', function() {
 algoSelection.addEventListener('change', function() {
     state = true;
 
+    timeoutFunctionsHeapSort.map((x) => clearTimeout(x));
+    timeoutFunctionsQuickSort.map((x) => clearTimeout(x));
+
+    clearTimeout(currentlyRunning)
+
     createArray(arrSize.value);
+
+    turnButtonOpaque();
 
     shuffleArr();
 
@@ -67,10 +83,13 @@ runbtn.addEventListener('click', function() {
 
     state = false;
     
+    turnButtonTranslucent();
+
     let delay = functionObject[selectedAlgo](arr, speed);
     
-    setTimeout(function() {
+    currentlyRunning = setTimeout(function() {
         state = true;
+        turnButtonOpaque();
         arr.map((x) => x.classList.remove('swappedCell'));
     }, delay);
 })
@@ -83,6 +102,16 @@ function positionAnnotation() {
 function insertTextIntoBubble(selectedAlgo) {
     annotationBubble.innerHTML = '';
     annotationBubble.innerHTML = annotationFunctionObject[selectedAlgo];
+}
+
+function turnButtonTranslucent() {
+    randomizebtn.style.opacity = 0.5;
+    runbtn.style.opacity = 0.5;
+}
+
+function turnButtonOpaque() {
+    randomizebtn.style.opacity = 1;
+    runbtn.style.opacity = 1;
 }
 
 randomizebtn.addEventListener('click', function() {

@@ -1,4 +1,6 @@
-export {heapSort}
+export {heapSort, timeoutFunctionsHeapSort}
+
+let timeoutFunctionsHeapSort = [];
 
 function heapSort(arr, speed) {
     let speedA = 0;
@@ -16,9 +18,11 @@ function heapSort(arr, speed) {
         [arr[i], arr[0]] = [arr[0], arr[i]];
         speedA = heapify(arr, i, 0, speed, speedA);
     }
+
+    return speedA
 }
 
-function heapify(arr, length, i, speed, speedA) {
+function heapify(arr, length, i, speed, speedA) {    
     let largest = i;
     let leftRoot = 2 * i + 1;
     let rightRoot =  2 * i + 2;
@@ -46,14 +50,14 @@ function heapify(arr, length, i, speed, speedA) {
 function swap(arr, i, j, speed, speedA) {
     arr = Array.from(arr);
 
-    setTimeout(function() {
+    timeoutFunctionsHeapSort.push(setTimeout(function() {
         arr[i].classList.add('comparedCell');
         arr[j].classList.add('comparedCell');
-    }, speedA)
+    }, speedA))
 
     speedA += +speed;
 
-    setTimeout(function() {
+    timeoutFunctionsHeapSort.push(setTimeout(function() {
         if (i - 1 < 0) {
             arr[j].after(arr[i]);
             arrContainer.prepend(arr[j]);
@@ -64,14 +68,14 @@ function swap(arr, i, j, speed, speedA) {
             arr[j].after(arr[i]);
             arr[i - 1].after(arr[j]);
         }
-    }, speedA)
+    }, speedA))
 
     speedA += +speed;
 
-    setTimeout(function() {
+    timeoutFunctionsHeapSort.push(setTimeout(function() {
         arr[i].classList.remove('comparedCell');
         arr[j].classList.remove('comparedCell');
-    }, speedA)
+    }, speedA))
 
     speedA += +speed;
 
@@ -81,14 +85,14 @@ function swap(arr, i, j, speed, speedA) {
 function arrange(arr, i, j, speed, speedA) {
     arr = Array.from(arr);
 
-    setTimeout(function() {
+    timeoutFunctionsHeapSort.push(setTimeout(function() {
         arr[i].classList.add('swappedCell');
         arr[j].classList.add('swappedCell');
-    }, speedA)
+    }, speedA))
 
     speedA += +speed;
 
-    setTimeout(function() {
+    timeoutFunctionsHeapSort.push(setTimeout(function() {
         if (i - 1 < 0) {
             arr[j].after(arr[i]);
             arrContainer.prepend(arr[j]);
@@ -99,14 +103,14 @@ function arrange(arr, i, j, speed, speedA) {
             arr[j].after(arr[i]);
             arr[i - 1].after(arr[j]);
         }
-    }, speedA)
+    }, speedA))
 
     speedA += +speed;
 
-    setTimeout(function() {
+    timeoutFunctionsHeapSort.push(setTimeout(function() {
         arr[i].classList.remove('swappedCell');
         arr[j].classList.remove('swappedCell');
-    }, speedA)
+    }, speedA))
     
     speedA += +speed;
 

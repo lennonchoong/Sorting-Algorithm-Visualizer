@@ -1,17 +1,15 @@
-export {quickSort}
+export {quickSort, timeoutFunctionsQuickSort}
 
 let speedA = 0;
+
+let timeoutFunctionsQuickSort = [];
 
 function partition(arr, low, high, speed) {
     let i = (low - 1);
 
     let pivot = arr[high];
 
-    setTimeout(function() {
-        arr[high].classList.add('pivot');
-    }, speedA);
-    
-    speedA += +speed;
+    highlightPivot(pivot, speed, speedA);
 
     for (let j = low; j < high; j++) {
         if (parseInt(arr[j].style.height) < parseInt(pivot.style.height)) {
@@ -27,11 +25,7 @@ function partition(arr, low, high, speed) {
     
     swapPivot(arr, i , high, speed);
 
-    speedA += +speed;
-
-    setTimeout(function() {
-        arr[high].classList.remove('pivot');
-    }, speedA);
+    highlightPivot(pivot, speed, speedA);
 
     [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
 
@@ -55,6 +49,18 @@ function quickSort(arr, speed, low = 0, high = arr.length -1) {
     return returnSpeed
 }
 
+function highlightPivot(pivot, speed, speedA) {
+    timeoutFunctionsQuickSort.push(setTimeout(function() {
+        if (pivot.classList.contains('pivot')) {
+            pivot.classList.remove('pivot');
+        } else {
+            pivot.classList.add('pivot');
+        }
+    }, speedA));
+
+    speedA += +speed;
+}
+
 function highlightComparison(arr, i, j, speed) {
     arr = Array.from(arr);
     if (i < 0) {
@@ -64,30 +70,30 @@ function highlightComparison(arr, i, j, speed) {
     if (j < 0) { 
         j = 0;
     }
-    setTimeout(function() {        
+    timeoutFunctionsQuickSort.push(setTimeout(function() {        
         arr[j].classList.add('comparedCell');
         arr[i].classList.add('comparedCell');
-    }, speedA)
+    }, speedA))
 
     speedA += +speed;
 
-    setTimeout(function() {
+    timeoutFunctionsQuickSort.push(setTimeout(function() {
         arr[i].classList.remove('comparedCell');
         arr[j].classList.remove('comparedCell');
-    }, speedA)
+    }, speedA))
 }
 
 function swap(arr, i, j, speed) {
     arr = Array.from(arr);
 
-    setTimeout(function() {
+    timeoutFunctionsQuickSort.push(setTimeout(function() {
         arr[j].classList.add('swappedCell');
         arr[i].classList.add('swappedCell');
-    }, speedA)
+    }, speedA))
 
     speedA += speed;
 
-    setTimeout(function() {
+    timeoutFunctionsQuickSort.push(setTimeout(function() {
         let beforeI;
 
         if (i - 1 < 0) {
@@ -100,21 +106,21 @@ function swap(arr, i, j, speed) {
             arr[beforeI].after(arr[j]);
         }
         
-    }, speedA)
+    }, speedA))
     
     speedA += +speed;
     
-    setTimeout(function() {
+    timeoutFunctionsQuickSort.push(setTimeout(function() {
         arr[j].classList.remove('swappedCell');
         arr[i].classList.remove('swappedCell');
-    }, speedA);
+    }, speedA));
 
 }
 
 function swapPivot(arr, i, high, speed) {
     arr = Array.from(arr);
 
-    setTimeout(function() {
+    timeoutFunctionsQuickSort.push(setTimeout(function() {
         if (i >= 0) {
             arr[high].after(arr[i + 1]);
             arr[i].after(arr[high]);
@@ -122,7 +128,7 @@ function swapPivot(arr, i, high, speed) {
             arr[high].after(arr[i + 1]);
             arrContainer.prepend(arr[high]);
         }
-    }, speedA)
+    }, speedA))
     
     speedA += +speed;
 }

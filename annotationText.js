@@ -1,6 +1,11 @@
 export {annotationFunctionObject}
 
 let annotationFunctionObject = {
-    'bubbleSort': '<span class="greenText">Green</span> indicates taller bar being compared and placed backwards \n \n <span class="redText">Red</span> indicates shorter bar being compared and place forwards.',
-    'quickSort': '<span class=""></span>'
+    'bubbleSort': 'Worst Case Time Complexity: O(n^2)\n \n <span class="greenText">Green</span> highlights taller bar being compared and swapped to the right \n \n <span class="redText">Red</span> highlights shorter bar being compared and swapped to the left',
+    'quickSort': 'Worst Case Time Complexity: O(n^2)\n \n Average Case Time Complexity: O(n log(n)) \n \n <span class="cyanText">Cyan</span> highlights chosen pivot \n\n <span class="greenText">Green</span> highlights that leading bar is shorter than pivot & is swapped with trailing bar. \n\n <span class="redText">Red</span> highlights that leading bar is taller than pivot & no swapping occurs with trailing bar',
+    'mergeSort': 'Worst Case Time Complexity: O(n log(n)) \n\n <span class="greenText">Green</span> highlights bars that have been merged \n\n <span class="redText">Red</span> highlights halves that are currently being merged and sorted',
+    'insertionSort': 'Worst Case Time Complexity: O(n^2) \n\n <span class="greenText">Green</span> highlights current bar being inserted to the left \n\n <span class="redText">Red</span> highlights bars that are taller than inserted bar', 
+    'selectionSort': 'Worst Case Time Complexity: O(n^2) \n\n <span class="greenText">Green</span> highlights current shortest bar \n\n <span class="redText">Red</span> highlights bar that is compared to current shortest bar and swaps it if shorter than current shortest bar',
+    'cocktailSort': 'Worst Case Time Complexity: O(n^2) \n\n <span class="greenText">Green</span> highlights taller bar being compared and swapped to the right (forward iteration) or shorter bar being compared and swapped to the left (reverse iteration) \n\n <span class="redText">Red</span> highlights shorter bar being compared and swapped to the left (forward iteration) or taller bar being compared and swapped to the right (reverse iteration)',
+    'heapSort': 'Worst Case Time Complexity: O(n log(n)) \n\n <span class="greenText">Green</span> highlight tallest bar in heap being placed at the back \n\n <span class="redText">Red</span> highlights bars (nodes) which are swapped during max heap creation'
 }
