@@ -106,15 +106,10 @@ function swap(arr, i, j, speed) {
             arr[beforeI].after(arr[j]);
         }
         
-    }, speedA))
-    
-    speedA += +speed;
-    
-    timeoutFunctionsQuickSort.push(setTimeout(function() {
         arr[j].classList.remove('swappedCell');
         arr[i].classList.remove('swappedCell');
-    }, speedA));
-
+    }, speedA))
+    
 }
 
 function swapPivot(arr, i, high, speed) {
