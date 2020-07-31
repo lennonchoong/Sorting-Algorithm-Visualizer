@@ -77,8 +77,6 @@ function swap(arr, i, j, speed, speedA) {
         arr[j].classList.remove('comparedCell');
     }, speedA))
 
-    speedA += +speed;
-
     return speedA
 }
 
@@ -111,8 +109,6 @@ function arrange(arr, i, j, speed, speedA) {
         arr[i].classList.remove('swappedCell');
         arr[j].classList.remove('swappedCell');
     }, speedA))
-    
-    speedA += +speed;
 
     return speedA
 }
