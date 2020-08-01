@@ -1,18 +1,18 @@
 import {createArray, positionArrCenter, shuffleArr, checkIfSorted} from './array.js'
 
-import {bubbleSort} from './bubblesort.js'
+import {bubbleSort} from './algorithms/bubblesort.js'
 
-import {mergeSort} from './mergesort.js'
+import {mergeSort} from './algorithms/mergesort.js'
 
-import {insertionSort} from './insertionsort.js'
+import {insertionSort} from './algorithms/insertionsort.js'
 
-import {selectionSort} from './selectionsort.js'
+import {selectionSort} from './algorithms/selectionsort.js'
 
-import {quickSort, timeoutFunctionsQuickSort} from './quicksort.js'
+import {quickSort, timeoutFunctionsQuickSort} from './algorithms/quicksort.js'
 
-import {cocktailSort} from './cocktailsort.js'
+import {cocktailSort} from './algorithms/cocktailsort.js'
 
-import {heapSort, timeoutFunctionsHeapSort} from './heapsort.js'
+import {heapSort, timeoutFunctionsHeapSort} from './algorithms/heapsort.js'
 
 import {annotationFunctionObject} from './annotationText.js'
 
